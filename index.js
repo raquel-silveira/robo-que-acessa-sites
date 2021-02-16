@@ -3,9 +3,9 @@ const readlineSync = require('readline-sync');
 
 console.log('Bem vindo');
 
-async function robo() {
+async function robot() {
     const browser = await puppeteer.launch({ headless: true });
-    
+
     try {
         const page = await browser.newPage();
         const baseCurency = readlineSync.question('Informe uma moeda base: ') || 'dolar';
@@ -14,11 +14,11 @@ async function robo() {
         await page.goto(someUrl);
         // await page.screenshot({ path: 'example.png' });
     
-        const resultado = await page.evaluate(() => {
+        const result = await page.evaluate(() => {
             return document.querySelector('.a61j6.vk_gy.vk_sh.Hg3mWc').value;
         });
     
-        console.log(`O valor de 1 ${baseCurency} em ${finalCurency} é ${resultado}`);
+        console.log(`O valor de 1 ${baseCurency} em ${finalCurency} é ${result}`);
     } catch (error) {
         console.log("Não foi possível encontrar o resultado, verifique se a ortografia está correta e tente novamente.")
     } finally {
@@ -26,4 +26,4 @@ async function robo() {
     }
 }
 
-robo();
+robot();
